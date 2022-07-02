@@ -1765,7 +1765,7 @@ Game.Launch = function () {
 		Game.T = 0;
 		Game.drawT = 0;
 		Game.loopT = 0;
-		Game.fps = 30;
+		Game.fps = 1; // 300 -> 30 -> 3 -> 1
 
 		Game.season = Game.baseSeason;
 
@@ -14632,7 +14632,8 @@ Game.Launch = function () {
 			/*
 			orginal = 1000 -> 100 -> 10
 			*/
-			Game.accumulatedDelay -= 10 / Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
+			Vitesse = 0.5;
+			Game.accumulatedDelay -= Vitesse / Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
 		}
 		Game.catchupLogic = 0;
 		Timer.track('logic');
@@ -14676,7 +14677,9 @@ Game.Launch = function () {
 		Timer.reset();
 
 		Game.loopT++;
-		setTimeout(Game.Loop, 1000 / Game.fps);
+		// 1000
+		Vitesse = 5;
+		setTimeout(Game.Loop, Vitesse / Game.fps);
 	}
 }
 
