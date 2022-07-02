@@ -1765,7 +1765,7 @@ Game.Launch = function () {
 		Game.T = 0;
 		Game.drawT = 0;
 		Game.loopT = 0;
-		Game.fps = 300;
+		Game.fps = 30;
 
 		Game.season = Game.baseSeason;
 
@@ -14629,7 +14629,10 @@ Game.Launch = function () {
 		//if (Game.accumulatedDelay>=Game.fps) console.log('delay:',Math.round(Game.accumulatedDelay/Game.fps));
 		while (Game.accumulatedDelay > 0) {
 			Game.Logic();
-			Game.accumulatedDelay -= 1000 / Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
+			/*
+			orginal = 1000 -> 100 -> 10
+			*/
+			Game.accumulatedDelay -= 10 / Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
 		}
 		Game.catchupLogic = 0;
 		Timer.track('logic');
