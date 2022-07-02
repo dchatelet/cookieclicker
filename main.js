@@ -14632,7 +14632,7 @@ Game.Launch = function () {
 			/*
 			orginal = 1000 -> 100 -> 10
 			*/
-			Vitesse = 0.5;
+			Vitesse = 0.01;
 			Game.accumulatedDelay -= Vitesse / Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
 		}
 		Game.catchupLogic = 0;
@@ -14678,7 +14678,7 @@ Game.Launch = function () {
 
 		Game.loopT++;
 		// 1000
-		Vitesse = 5;
+		Vitesse = 2;
 		setTimeout(Game.Loop, Vitesse / Game.fps);
 	}
 }
