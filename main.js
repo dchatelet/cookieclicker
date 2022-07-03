@@ -1772,10 +1772,16 @@ Game.Launch = function () {
 		Game.l = l('game');
 		Game.wrapper = l('wrapper');
 		Game.bounds = 0;//rectangle defining screen limits (right,left,bottom,top) updated every logic frame
+		/*
+				modif = supprime topBae
+				TopBarOffset = 32;
+				if (!App) Game.wrapper.classList.add('onWeb');
+				else { Game.wrapper.classList.add('offWeb'); TopBarOffset = 0; }
+		
+		
+				*/
 
-		TopBarOffset = 32;
-		if (!App) Game.wrapper.classList.add('onWeb');
-		else { Game.wrapper.classList.add('offWeb'); TopBarOffset = 0; }
+		Game.wrapper.classList.add('offWeb'); TopBarOffset = 0;
 
 		if (Game.mobile == 1) {
 			Game.wrapper.className = 'mobile';
@@ -14632,7 +14638,7 @@ Game.Launch = function () {
 			/*
 			orginal = 1000 -> 100 -> 10
 			*/
-			Vitesse = 0.01;
+			Vitesse = 0.0015;
 			Game.accumulatedDelay -= Vitesse / Game.fps;//as long as we're detecting latency (slower than target fps), execute logic (this makes drawing slower but makes the logic behave closer to correct target fps)
 		}
 		Game.catchupLogic = 0;
@@ -14678,7 +14684,7 @@ Game.Launch = function () {
 
 		Game.loopT++;
 		// 1000
-		Vitesse = 2;
+		Vitesse = 0.2;
 		setTimeout(Game.Loop, Vitesse / Game.fps);
 	}
 }
