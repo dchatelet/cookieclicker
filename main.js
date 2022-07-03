@@ -3899,6 +3899,7 @@ Game.Launch = function () {
 			if (Game.UpgradesById[what].buy()) {
 				if (l('heavenlyUpgrade' + what)) { var rect = l('heavenlyUpgrade' + what).getBounds(); Game.SparkleAt((rect.left + rect.right) / 2, (rect.top + rect.bottom) / 2 - 24); }
 				//Game.BuildAscendTree();
+				// console.log(what);
 			}
 		}
 		Game.BuildAscendTree = function (justBought) {
@@ -7788,6 +7789,7 @@ Game.Launch = function () {
 
 		Game.ClickProduct = function (what) {
 			Game.ObjectsById[what].buy();
+			console.log(what, Game);
 		}
 
 		Game.RefreshStore = function ()//refresh the store's buildings
